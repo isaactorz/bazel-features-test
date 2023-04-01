@@ -10,7 +10,7 @@ cc_test(
     features = ["c++20"],
 )
 
-# requires gcc-12, clang-14, or vs2022
+# requires gcc-12, clang-16, or vs2022
 cc_test(
     name = "c++23_feature_test",
     srcs = ["c++23.cc"],
