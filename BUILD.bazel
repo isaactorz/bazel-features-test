@@ -1,0 +1,5 @@
+cc_test(
+    name = "c++17_feature_test",
+    srcs = ["c++17.cc"],
+    copts = ["-std=c++17"],
+)
