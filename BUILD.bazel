@@ -41,3 +41,41 @@ cc_test(
     copts = ["-Werror=deprecated-declarations"],
 )
 
+cc_test(
+    name = "gnu++14_feature_test",
+    srcs = ["gnu++14.cc"],
+    features = [
+        "c++14",
+        "gnu_extensions",
+    ],
+)
+
+cc_test(
+    name = "gnu++17_feature_test",
+    srcs = ["gnu++17.cc"],
+    features = [
+        "c++17",
+        "gnu_extensions",
+    ],
+)
+
+cc_test(
+    name = "gnu++20_feature_test",
+    srcs = ["gnu++20.cc"],
+    features = [
+        "c++20",
+        "gnu_extensions",
+    ],
+)
+
+# requires gcc-12, clang-16, or vs2022
+cc_test(
+    name = "gnu++23_feature_test",
+    srcs = ["gnu++23.cc"],
+    features = [
+        "c++2b",
+        "gnu_extensions",
+    ],
+    tags = ["manual"],
+)
+
