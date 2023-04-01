@@ -30,3 +30,14 @@ cc_test(
     features = ["c++2b"],
     tags = ["manual"],
 )
+
+cc_test(
+    name = "gnu++98_feature_test",
+    srcs = ["gnu++98.cc"],
+    features = [
+        "c++98",
+        "gnu_extensions",
+    ],
+    copts = ["-Werror=deprecated-declarations"],
+)
+
