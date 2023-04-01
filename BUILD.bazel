@@ -15,6 +15,16 @@ cc_test(
 )
 
 cc_test(
+    name = "c23_feature_test",
+    srcs = ["c23.c"],
+    features = ["c2x"],
+    copts = [
+        "-pedantic",
+        "-Werror=pedantic",
+    ],
+)
+
+cc_test(
     name = "c++98_feature_test",
     srcs = ["c++98.cc"],
     features = ["c++98"],
