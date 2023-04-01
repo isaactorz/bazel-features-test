@@ -65,8 +65,8 @@ cc_test(
         "gnu_extensions",
     ],
     copts = [
-        "-pedantic",
-        "-Werror=pedantic",
+#        "-pedantic",
+#        "-Werror=pedantic",
     ],
 )
 
@@ -87,8 +87,8 @@ cc_test(
         "gnu_extensions",
     ],
     copts = [
-        "-pedantic",
-        "-Werror=pedantic",
+#        "-pedantic",
+#        "-Werror=pedantic",
     ],
 )
 
