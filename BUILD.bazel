@@ -58,6 +58,41 @@ cc_test(
 )
 
 cc_test(
+    name = "gnu11_feature_test",
+    srcs = ["gnu11.c"],
+    features = [
+        "c11",
+        "gnu_extensions",
+    ],
+    copts = [
+        "-pedantic",
+        "-Werror=pedantic",
+    ],
+)
+
+cc_test(
+    name = "gnu17_feature_test",
+    srcs = ["gnu17.c"],
+    features = [
+        "c17",
+        "gnu_extensions",
+    ],
+)
+
+cc_test(
+    name = "gnu23_feature_test",
+    srcs = ["gnu23.c"],
+    features = [
+        "c2x",
+        "gnu_extensions",
+    ],
+    copts = [
+        "-pedantic",
+        "-Werror=pedantic",
+    ],
+)
+
+cc_test(
     name = "gnu++98_feature_test",
     srcs = ["gnu++98.cc"],
     features = [
