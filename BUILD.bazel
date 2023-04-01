@@ -1,4 +1,10 @@
 cc_test(
+    name = "c++14_feature_test",
+    srcs = ["c++14.cc"],
+    features = ["c++14"],
+)
+
+cc_test(
     name = "c++17_feature_test",
     srcs = ["c++17.cc"],
     features = ["c++17"],
