@@ -2,10 +2,13 @@ cc_test(
     name = "c11_feature_test",
     srcs = ["c11.c"],
     features = ["c11"],
-    copts = [
-        "-pedantic",
-        "-Werror=pedantic",
-    ],
+    copts = select({
+        "@platforms//os:windows": [], 
+        "//conditions:default": [
+            "-pedantic",
+            "-Werror=pedantic",
+        ],
+    }),
 )
 
 cc_test(
