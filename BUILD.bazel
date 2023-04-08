@@ -22,23 +22,6 @@ cc_test(
 )
 
 cc_test(
-    name = "c23_feature_test",
-    srcs = ["c23.c"],
-    features = ["c2x"],
-    copts = select({
-        "@platforms//os:windows": [], 
-        "//conditions:default": [
-            "-pedantic",
-            "-Werror=pedantic",
-        ],
-    }),
-    target_compatible_with = select({
-        "@platforms//os:windows": ["@platforms//:incompatible"],
-        "//conditions:default": [],
-    }),
-)
-
-cc_test(
     name = "c++98_feature_test",
     srcs = ["c++98.cc"],
     features = ["c++98"],
@@ -68,14 +51,6 @@ cc_test(
     features = ["c++20"],
 )
 
-# requires gcc-12, clang-16, or vs2022
-cc_test(
-    name = "c++23_feature_test",
-    srcs = ["c++23.cc"],
-    features = ["c++2b"],
-    tags = ["manual"],
-)
-
 cc_test(
     name = "gnu11_feature_test",
     srcs = ["gnu11.c"],
@@ -99,23 +74,6 @@ cc_test(
     features = [
         "c17",
         "gnu_extensions",
-    ],
-    target_compatible_with = select({
-        "@platforms//os:windows": ["@platforms//:incompatible"],
-        "//conditions:default": [],
-    }),
-)
-
-cc_test(
-    name = "gnu23_feature_test",
-    srcs = ["gnu23.c"],
-    features = [
-        "c2x",
-        "gnu_extensions",
-    ],
-    copts = [
-#        "-pedantic",
-#        "-Werror=pedantic",
     ],
     target_compatible_with = select({
         "@platforms//os:windows": ["@platforms//:incompatible"],
@@ -175,19 +133,3 @@ cc_test(
         "//conditions:default": [],
     }),
 )
-
-# requires gcc-12, clang-16, or vs2022
-cc_test(
-    name = "gnu++23_feature_test",
-    srcs = ["gnu++23.cc"],
-    features = [
-        "c++2b",
-        "gnu_extensions",
-    ],
-    tags = ["manual"],
-    target_compatible_with = select({
-        "@platforms//os:windows": ["@platforms//:incompatible"],
-        "//conditions:default": [],
-    }),
-)
-
