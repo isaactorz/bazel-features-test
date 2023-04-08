@@ -21,17 +21,25 @@ cc_test(
     name = "c23_feature_test",
     srcs = ["c23.c"],
     features = ["c2x"],
-    copts = [
-        "-pedantic",
-        "-Werror=pedantic",
-    ],
+    copts = select({
+        "@platforms//os:windows": [], 
+        "//conditions:default": [
+            "-pedantic",
+            "-Werror=pedantic",
+        ],
+    }),
 )
 
 cc_test(
     name = "c++98_feature_test",
     srcs = ["c++98.cc"],
     features = ["c++98"],
-    copts = ["-Werror=deprecated-declarations"],
+    copts = select({
+        "@platforms//os:windows": [], 
+        "//conditions:default": [
+            "-Werror=deprecated-declarations",
+        ],
+    }),
 )
 
 cc_test(
@@ -71,6 +79,10 @@ cc_test(
 #        "-pedantic",
 #        "-Werror=pedantic",
     ],
+    targets_compatible_with = select({
+        "@platforms//os:windows": ["@platforms//:incompatible"],
+        "//conditions:default": [],
+    }),
 )
 
 cc_test(
@@ -80,6 +92,10 @@ cc_test(
         "c17",
         "gnu_extensions",
     ],
+    targets_compatible_with = select({
+        "@platforms//os:windows": ["@platforms//:incompatible"],
+        "//conditions:default": [],
+    }),
 )
 
 cc_test(
@@ -93,6 +109,10 @@ cc_test(
 #        "-pedantic",
 #        "-Werror=pedantic",
     ],
+    targets_compatible_with = select({
+        "@platforms//os:windows": ["@platforms//:incompatible"],
+        "//conditions:default": [],
+    }),
 )
 
 cc_test(
@@ -103,6 +123,10 @@ cc_test(
         "gnu_extensions",
     ],
     copts = ["-Werror=deprecated-declarations"],
+    targets_compatible_with = select({
+        "@platforms//os:windows": ["@platforms//:incompatible"],
+        "//conditions:default": [],
+    }),
 )
 
 cc_test(
@@ -112,6 +136,10 @@ cc_test(
         "c++14",
         "gnu_extensions",
     ],
+    targets_compatible_with = select({
+        "@platforms//os:windows": ["@platforms//:incompatible"],
+        "//conditions:default": [],
+    }),
 )
 
 cc_test(
@@ -121,6 +149,10 @@ cc_test(
         "c++17",
         "gnu_extensions",
     ],
+    targets_compatible_with = select({
+        "@platforms//os:windows": ["@platforms//:incompatible"],
+        "//conditions:default": [],
+    }),
 )
 
 cc_test(
@@ -130,6 +162,10 @@ cc_test(
         "c++20",
         "gnu_extensions",
     ],
+    targets_compatible_with = select({
+        "@platforms//os:windows": ["@platforms//:incompatible"],
+        "//conditions:default": [],
+    }),
 )
 
 # requires gcc-12, clang-16, or vs2022
@@ -141,5 +177,9 @@ cc_test(
         "gnu_extensions",
     ],
     tags = ["manual"],
+    targets_compatible_with = select({
+        "@platforms//os:windows": ["@platforms//:incompatible"],
+        "//conditions:default": [],
+    }),
 )
 
